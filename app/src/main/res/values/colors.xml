@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">@color/black</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="pink">#FE3C72</color>
+
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="background">#EBEBEB</color>
+    <color name="grey">#3F3F3F</color>
+    <color name="light_grey">#8A8888</color>
+
+    <!-- new colors -->
+    <color name="coral">#FF7854</color>
+    <color name="neon_carrot">#FC9842</color>
+    <color name="sunglow">#FBBB32</color>
+    <color name="ripe_lemon">#F8E71C</color>
+    <color name="carnation">#FD5365</color>
+    <color name="bittersweet">#F87D67</color>
+    <color name="sand_brown">#F6A96B</color>
+    <color name="cream_can">#F1C057</color>
+    <color name="hot_pink">#FC3078</color>
+    <color name="brink_pink">#F6638E</color>
+    <color name="dusty_rose">#F297A6</color>
+    <color name="nude_pink">#EC9993</color>
+    <color name="eletric_violet">#9013FE</color>
+    <color name="deluge">#8266B3</color>
+    <color name="nepal">#87A6B9</color>
+    <color name="gulf_stream">#88C0AC</color>
+    <color name="blue">#031EE5</color>
+    <color name="denim">#1069D9</color>
+    <color name="java">#1DB5CE</color>
+    <color name="turquoise">#26E7C7</color>
+    <color name="neon_green">#0CF574</color>
+
+</resources>

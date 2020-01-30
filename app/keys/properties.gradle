@@ -1,0 +1,5 @@
+ext {
+    tmdb_key = "\"4b52fa3a04278ae92da164f3ee9820c5\""
+    url_base = "\"https://api.themoviedb.org/3/\""
+    language = "\"pt-BR\""
+}
