@@ -26,7 +26,6 @@ val appModule = module {
 
                 val url:HttpUrl = originalHttpUrl.newBuilder()
                     .addQueryParameter("api_key", BuildConfig.TMDB_KEY)
-                    .addQueryParameter("language",BuildConfig.LANGUAGE)
                     .build()
                 val requestBuilder = original.newBuilder()
                     .url(url)

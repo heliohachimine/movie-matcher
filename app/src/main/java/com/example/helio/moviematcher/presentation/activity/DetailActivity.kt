@@ -4,6 +4,7 @@ import android.app.SearchManager
 import android.content.ActivityNotFoundException
 import android.content.ComponentName
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
@@ -25,6 +26,8 @@ import com.example.helio.moviematcher.presentation.adapter.SliderAdapter
 import com.example.helio.moviematcher.presentation.viewmodel.MovieViewModel
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
+import java.net.URI
+import java.net.URLEncoder
 import kotlin.properties.Delegates
 
 class DetailActivity : AppCompatActivity() {
@@ -33,6 +36,7 @@ class DetailActivity : AppCompatActivity() {
     private val sliderAdapter: SliderAdapter by inject()
     lateinit var binding: ActivityDetailBinding
     var movieId by Delegates.notNull<Long>()
+    val imgs = ArrayList<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,8 +47,9 @@ class DetailActivity : AppCompatActivity() {
         }
         movieId = intent.getLongExtra("movie_id", 0)
         getMovieData(movieId)
-        getKeywordsData(movieId)
-        setupRecycler()
+//        getKeywordsData(movieId)
+        getImages(movieId)
+//        setupRecycler()
 
     }
 
@@ -56,10 +61,20 @@ class DetailActivity : AppCompatActivity() {
                 textView.text = keyword.name
                 textView.setTextColor(resources.getColor(R.color.white))
                 textView.background = resources.getDrawable(R.drawable.background_keyword)
-                binding.keywordsLayout.addView(textView)
 
             }
 
+        })
+    }
+    private fun getImages(id: Long) {
+        viewModel.getImagesMovie(id)
+        viewModel.movieImagesLiveData.observe(this, Observer { images ->
+            images.backdrops?.forEach {
+                if (it.aspect_ratio != null && it.aspect_ratio == 1.0)
+                imgs.add("https://image.tmdb.org/t/p/original/" + it.file_path)
+            }
+            sliderAdapter.setList(imgs)
+            setupRecycler()
         })
     }
 
@@ -68,14 +83,20 @@ class DetailActivity : AppCompatActivity() {
         viewModel.singleMovieLiveData.observe(this, Observer { movie ->
             binding.movieOverview.text = movie.overview
             binding.movieTitle.text = movie.title
-            val imgs = ArrayList<String>()
-            imgs.add("https://image.tmdb.org/t/p/original" + movie.posterPath)
-            imgs.add("https://image.tmdb.org/t/p/original" + movie.backdropPath)
+//            imgs.add("https://image.tmdb.org/t/p/original" + movie.posterPath)
+//            imgs.add("https://image.tmdb.org/t/p/original" + movie.backdropPath)
             binding.spotifyBtn.setOnClickListener {
                 openSpotify(movie.title)
             }
-
-            sliderAdapter.setList(imgs)
+            binding.netflixBtn.setOnClickListener {
+                openNetflix(movie.title)
+            }
+        })
+        viewModel.movieImagesLiveData.observe(this, Observer { images ->
+            images.backdrops?.forEach {
+                imgs.add("https://image.tmdb.org/t/p/original" + it.file_path)
+            }
+//            sliderAdapter.setList(imgs)
         })
     }
 
@@ -84,18 +105,15 @@ class DetailActivity : AppCompatActivity() {
         binding.movieBackdrop.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
     }
 
-    fun openSpotify(title: String) {
+    private fun openSpotify(title: String) {
         val launcher = Intent(Intent.ACTION_VIEW)
-        launcher.action = MediaStore.INTENT_ACTION_MEDIA_PLAY_FROM_SEARCH
-        launcher.component = ComponentName(
-            "com.spotify.music", "com.spotify.music.MainActivity"
-        )
-        launcher.putExtra(SearchManager.QUERY, title)
-        try {
-            startActivity(launcher)
-        } catch (e: ActivityNotFoundException) {
-            Toast.makeText(this, "É necessário ter o Spotify instalado", Toast.LENGTH_SHORT).show()
-        }
+        launcher.data = Uri.parse("https://open.spotify.com/search/" + URLEncoder.encode(title, "UTF-8"))
+        startActivity(launcher)
+    }
 
+    private fun openNetflix(title: String) {
+        val launcher = Intent(Intent.ACTION_VIEW)
+        launcher.data = Uri.parse("https://www.netflix.com/search/" + title)
+        startActivity(launcher)
     }
 }

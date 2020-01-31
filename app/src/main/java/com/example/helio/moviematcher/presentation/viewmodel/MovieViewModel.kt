@@ -4,9 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.helio.moviematcher.data.repository.MovieRepository
 import androidx.lifecycle.viewModelScope
-import com.example.helio.moviematcher.data.response.GenreResponse
-import com.example.helio.moviematcher.data.response.KeywordResponse
-import com.example.helio.moviematcher.data.response.MovieResponse
+import com.example.helio.moviematcher.data.response.*
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 
@@ -14,6 +12,7 @@ class MovieViewModel(private val repository: MovieRepository) : ViewModel(){
 
     val genresLiveData = MutableLiveData<List<GenreResponse>>()
     val moviesLiveData = MutableLiveData<List<MovieResponse>>()
+    val movieImagesLiveData = MutableLiveData<ImagesResult>()
     val moviesByGenreLiveData = MutableLiveData<List<MovieResponse>>()
     val singleMovieLiveData = MutableLiveData<MovieResponse>()
     val movieKeywordsLiveData = MutableLiveData<List<KeywordResponse>>()
@@ -62,6 +61,17 @@ class MovieViewModel(private val repository: MovieRepository) : ViewModel(){
             kotlin.runCatching {
                 val movie = async {repository.getMovie(id)}
                 singleMovieLiveData.postValue(movie.await())
+            }.onFailure {
+                movieError.postValue(it)
+            }
+        }
+    }
+
+    fun getImagesMovie(id: Long) {
+        viewModelScope.launch {
+            kotlin.runCatching {
+                val images = async {repository.getMovieImages(id)}
+                movieImagesLiveData.postValue(images.await())
             }.onFailure {
                 movieError.postValue(it)
             }

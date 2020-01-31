@@ -4,14 +4,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <data></data>
-    <androidx.core.widget.NestedScrollView
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/movie_backdrop"
@@ -57,30 +57,29 @@
                 app:layout_constraintTop_toBottomOf="@id/movie_title"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                tools:text="descrição do filme, pode ser que o texto seja longo"/>
-            <com.google.android.flexbox.FlexboxLayout
-                android:id="@+id/keywords_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginHorizontal="16dp"
-                app:flexDirection="row"
-                app:flexWrap="wrap"
-                app:layout_constraintTop_toBottomOf="@id/movie_overview"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
-
-            </com.google.android.flexbox.FlexboxLayout>
+                tools:text="descrição do filme, pode ser que o texto seja longo
+                        muito muito muito muito mesmo"/>
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/spotify_btn"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 android:src="@drawable/ic_spotify"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/movie_overview"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginEnd="40dp"
-                android:layout_marginBottom="40dp"/>
+                android:layout_marginTop="32dp"/>
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/netflix_btn"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/ic_netflix"
+
+                app:layout_constraintEnd_toStartOf="@id/spotify_btn"
+                app:layout_constraintTop_toTopOf="@id/spotify_btn"
+                app:layout_constraintBottom_toBottomOf="@id/spotify_btn"
+                android:layout_marginEnd="40dp"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.core.widget.NestedScrollView>
+    </ScrollView>
 </layout>
