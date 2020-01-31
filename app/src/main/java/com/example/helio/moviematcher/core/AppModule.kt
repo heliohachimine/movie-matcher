@@ -2,8 +2,8 @@ package com.example.helio.moviematcher.core
 
 import com.example.helio.moviematcher.BuildConfig
 import com.example.helio.moviematcher.data.service.MoviesService
+import com.example.helio.moviematcher.presentation.ImagePager
 import com.example.helio.moviematcher.presentation.adapter.GenreAdapter
-import com.example.helio.moviematcher.presentation.adapter.SliderAdapter
 import okhttp3.*
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.core.qualifier.named
@@ -59,6 +59,7 @@ val appModule = module {
     factory {
         GenreAdapter()
     }
-    factory { SliderAdapter() }
+
+    factory { ImagePager() }
 
 }

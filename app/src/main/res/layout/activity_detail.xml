@@ -13,17 +13,31 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <androidx.recyclerview.widget.RecyclerView
+            <androidx.viewpager.widget.ViewPager
                 android:id="@+id/movie_backdrop"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/width_card"
-                android:background="@color/grey"
-                android:orientation="horizontal"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                tools:listitem="@layout/adapter_slider"/>
+                app:layout_constraintEnd_toEndOf="parent">
 
+            </androidx.viewpager.widget.ViewPager>
+            <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
+                android:id="@+id/dots_indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="400dp"
+                app:dotsColor="@color/white"
+                app:dotsCornerRadius="8dp"
+                app:dotsSize="12dp"
+                app:dotsSpacing="4dp"
+                app:dotsWidthFactor="2.5"
+                app:selectedDotColor="@color/white"
+                app:progressMode="true"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                />
             <ImageButton
                 android:id="@+id/ib_come_back"
                 android:layout_width="24dp"
