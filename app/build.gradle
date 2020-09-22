@@ -8,6 +8,9 @@ apply plugin: 'kotlin-kapt'
 
 apply from: 'keys/properties.gradle'
 
+apply from: '../tools/detekt.gradle'
+check.dependsOn 'detekt'
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
