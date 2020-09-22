@@ -1,4 +1,4 @@
-package com.example.helio.moviematcher.core
+package com.example.helio.moviematcher.core.koin
 
 import com.example.helio.moviematcher.data.repository.MovieRepository
 import org.koin.dsl.module

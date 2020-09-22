@@ -40,8 +40,6 @@ class MatcherActivity : AppCompatActivity() {
             goToFragment(ListFragment.newInstance())
         }
         binding.tvHotValue.text = page.toString()
-
-
     }
 
     private fun goToFragment(fragment: Fragment) {
@@ -61,6 +59,5 @@ class MatcherActivity : AppCompatActivity() {
 
     private fun setupView() {
         supportActionBar?.hide()
-
     }
 }

@@ -1,9 +1,9 @@
-package com.example.helio.moviematcher
+package com.example.helio.moviematcher.core
 
 import android.app.Application
-import com.example.helio.moviematcher.core.appModule
-import com.example.helio.moviematcher.core.repositoryModule
-import com.example.helio.moviematcher.core.viewModelModule
+import com.example.helio.moviematcher.core.koin.appModule
+import com.example.helio.moviematcher.core.koin.repositoryModule
+import com.example.helio.moviematcher.core.koin.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
@@ -15,7 +15,11 @@ class MovieMatcherApplication : Application() {
 
         startKoin {
             androidContext(this@MovieMatcherApplication)
-            modules(listOf(repositoryModule, viewModelModule, appModule))
+            modules(listOf(
+                repositoryModule,
+                viewModelModule,
+                appModule
+            ))
         }
 
     }
