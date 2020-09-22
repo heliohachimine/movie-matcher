@@ -1,11 +1,15 @@
 package com.example.helio.moviematcher.data.repository
 
-import com.example.helio.moviematcher.data.response.*
+import com.example.helio.moviematcher.data.response.GenreResult
+import com.example.helio.moviematcher.data.response.KeywordResult
+import com.example.helio.moviematcher.data.response.MovieResponse
+import com.example.helio.moviematcher.data.response.MovieResult
+import com.example.helio.moviematcher.data.response.ImagesResult
 import com.example.helio.moviematcher.data.service.MoviesService
 
 class MovieRepository(private val service: MoviesService) {
 
-    companion object{
+    companion object {
         const val LANGUAGE = "pt-BR"
     }
 
@@ -41,4 +45,3 @@ class MovieRepository(private val service: MoviesService) {
         return service.getMovieImages(id)
     }
 }
-
