@@ -46,7 +46,8 @@ class ProfileFragment : Fragment(), GenreAdapterListener {
 
     private fun subscribeLiveData() {
         viewModel.genresLiveData.observe(
-            viewLifecycleOwner, Observer { genres ->
+            viewLifecycleOwner,
+            Observer { genres ->
                 genreAdapter.setList(genres)
             }
         )
