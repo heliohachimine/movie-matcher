@@ -19,8 +19,7 @@ class MovieViewModel(private val repository: MovieRepository) : ViewModel() {
     val moviesByGenreLiveData = MutableLiveData<List<MovieResponse>>()
     val singleMovieLiveData = MutableLiveData<MovieResponse>()
     val movieKeywordsLiveData = MutableLiveData<List<KeywordResponse>>()
-    val movieError : MutableLiveData<Throwable> = MutableLiveData()
-
+    val movieError: MutableLiveData<Throwable> = MutableLiveData()
 
     fun getGenresList() {
         viewModelScope.launch {
@@ -61,7 +60,9 @@ class MovieViewModel(private val repository: MovieRepository) : ViewModel() {
     fun getSingleMovie(id: Long) {
         viewModelScope.launch {
             kotlin.runCatching {
-                val movie = async {repository.getMovie(id)}
+                val movie = async {
+                    repository.getMovie(id)
+                }
                 singleMovieLiveData.postValue(movie.await())
             }.onFailure {
                 movieError.postValue(it)
@@ -72,7 +73,9 @@ class MovieViewModel(private val repository: MovieRepository) : ViewModel() {
     fun getImagesMovie(id: Long) {
         viewModelScope.launch {
             kotlin.runCatching {
-                val images = async {repository.getMovieImages(id)}
+                val images = async {
+                    repository.getMovieImages(id)
+                }
                 movieImagesLiveData.postValue(images.await())
             }.onFailure {
                 movieError.postValue(it)
