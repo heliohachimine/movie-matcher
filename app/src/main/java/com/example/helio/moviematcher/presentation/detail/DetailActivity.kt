@@ -33,7 +33,6 @@ class DetailActivity : AppCompatActivity() {
         movieId = intent.getLongExtra("movie_id", 0)
         getMovieData(movieId)
         getImages(movieId)
-
     }
 
     private fun getImages(id: Long) {
@@ -43,7 +42,7 @@ class DetailActivity : AppCompatActivity() {
             Observer { images ->
                 images.backdrops?.forEach {
                     if (it.aspect_ratio != null && it.aspect_ratio == 1.0)
-                    imgs.add("https://image.tmdb.org/t/p/original/" + it.file_path)
+                        imgs.add("https://image.tmdb.org/t/p/original/" + it.file_path)
                 }
                 imagePager.setList(imgs)
                 binding.movieBackdrop.adapter = imagePager

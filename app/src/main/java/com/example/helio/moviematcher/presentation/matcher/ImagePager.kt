@@ -46,5 +46,4 @@ class ImagePager : PagerAdapter() {
     override fun saveState(): Parcelable? {
         return null
     }
-
 }

@@ -31,5 +31,4 @@ class ListFragment : Fragment() {
         fun newInstance() = ListFragment()
             .apply {}
     }
-
 }

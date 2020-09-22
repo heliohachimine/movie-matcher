@@ -40,7 +40,7 @@ class ProfileFragment : Fragment(), GenreAdapterListener {
         genreAdapter.genreAdapterListener = this
         binding.rvGenres.adapter = genreAdapter
         context.let {
-            binding.rvGenres.layoutManager = GridLayoutManager(it,3)
+            binding.rvGenres.layoutManager = GridLayoutManager(it, 3)
         }
     }
 
