@@ -13,7 +13,11 @@ import com.mindorks.placeholderview.SwipePlaceHolderView
 import com.mindorks.placeholderview.annotations.Layout
 import com.mindorks.placeholderview.annotations.Resolve
 import com.mindorks.placeholderview.annotations.View
-import com.mindorks.placeholderview.annotations.swipe.*
+import com.mindorks.placeholderview.annotations.swipe.SwipeCancelState
+import com.mindorks.placeholderview.annotations.swipe.SwipeOut
+import com.mindorks.placeholderview.annotations.swipe.SwipeIn
+import com.mindorks.placeholderview.annotations.swipe.SwipeInState
+import com.mindorks.placeholderview.annotations.swipe.SwipeOutState
 
 @Layout(R.layout.card_movie)
 class MovieCard(context: Context, movie: MovieResponse, swipeView: SwipePlaceHolderView) {
@@ -63,5 +67,4 @@ class MovieCard(context: Context, movie: MovieResponse, swipeView: SwipePlaceHol
     private fun onSwipeOutState() {
         Log.d("EVENT", "onSwipeOutState")
     }
-
 }

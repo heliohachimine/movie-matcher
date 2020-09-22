@@ -45,38 +45,36 @@ class MatcherFragment : Fragment() {
 
     private fun getMoviesByGenre() {
         viewModel.getPopularMovies(page)
-        viewModel.moviesByGenreLiveData.observe(viewLifecycleOwner, Observer { movies ->
-            movies.random()
-            movies.forEach { movie ->
-                listMovies.add(movie)
-            }
-            binding.swipeView.getBuilder<SwipePlaceHolderView, SwipeViewBuilder<SwipePlaceHolderView>>()
-                .setDisplayViewCount(2)
-                .setSwipeDecor(
-                    SwipeDecor()
+        viewModel.moviesByGenreLiveData.observe(
+            viewLifecycleOwner, Observer { movies ->
+                movies.random()
+                movies.forEach { movie ->
+                    listMovies.add(movie)
+                }
+                binding.swipeView.getBuilder<SwipePlaceHolderView, SwipeViewBuilder<SwipePlaceHolderView>>()
+                    .setDisplayViewCount(2)
+                    .setSwipeDecor(
+                        SwipeDecor()
                         .setSwipeInMsgLayoutId(R.layout.swipe_in_msg_view)
                         .setSwipeOutMsgLayoutId(R.layout.swipe_out_msg_view)
-                )
-            listMovies.forEach { movie ->
-                context?.let {
-                    binding.swipeView.addView(
-                        MovieCard(
-                            it,
-                            movie,
-                            binding.swipeView
-                        )
                     )
+                listMovies.forEach { movie ->
+                    context?.let {
+                        binding.swipeView.addView(
+                            MovieCard(it, movie, binding.swipeView)
+                        )
+                    }
+                }
+                binding.swipeView.addItemRemoveListener {
+                    if (it < 2) {
+                        listMovies.clear()
+                        page = (1..100).random()
+                        // binding.tvHotValue.text = page.toString()
+                        viewModel.getPopularMovies(page)
+                    }
                 }
             }
-            binding.swipeView.addItemRemoveListener {
-                if (it < 2) {
-                    listMovies.clear()
-                    page = (1..100).random()
-                    //binding.tvHotValue.text = page.toString()
-                    viewModel.getPopularMovies(page)
-                }
-            }
-        })
+        )
     }
 
     companion object {

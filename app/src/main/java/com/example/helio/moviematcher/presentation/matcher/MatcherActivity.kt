@@ -11,7 +11,7 @@ import com.example.helio.moviematcher.presentation.detail.ProfileFragment
 import com.example.helio.moviematcher.presentation.viewmodel.MovieViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
-//TODO refactor rename to MainActivity
+// TODO refactor rename to MainActivity
 class MatcherActivity : AppCompatActivity() {
 
     companion object {

@@ -4,11 +4,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.helio.moviematcher.data.repository.MovieRepository
 import androidx.lifecycle.viewModelScope
-import com.example.helio.moviematcher.data.response.*
+import com.example.helio.moviematcher.data.response.GenreResponse
+import com.example.helio.moviematcher.data.response.MovieResponse
+import com.example.helio.moviematcher.data.response.ImagesResult
+import com.example.helio.moviematcher.data.response.KeywordResponse
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 
-class MovieViewModel(private val repository: MovieRepository) : ViewModel(){
+class MovieViewModel(private val repository: MovieRepository) : ViewModel() {
 
     val genresLiveData = MutableLiveData<List<GenreResponse>>()
     val moviesLiveData = MutableLiveData<List<MovieResponse>>()
@@ -43,7 +46,6 @@ class MovieViewModel(private val repository: MovieRepository) : ViewModel(){
         }
     }
 
-    //TODO refatorar essa função
     fun getPopularMovies(page: Int) {
         viewModelScope.launch {
             kotlin.runCatching {
