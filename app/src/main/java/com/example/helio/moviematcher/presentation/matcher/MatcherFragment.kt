@@ -46,7 +46,8 @@ class MatcherFragment : Fragment() {
     private fun getMoviesByGenre() {
         viewModel.getPopularMovies(page)
         viewModel.moviesByGenreLiveData.observe(
-            viewLifecycleOwner, Observer { movies ->
+            viewLifecycleOwner,
+            Observer { movies ->
                 movies.random()
                 movies.forEach { movie ->
                     listMovies.add(movie)

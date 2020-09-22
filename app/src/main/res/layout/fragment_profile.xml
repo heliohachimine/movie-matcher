@@ -6,7 +6,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.detail.ProfileFragment">
+        tools:context=".presentation.profile.ProfileFragment">
         <TextView
             android:id="@+id/label_home"
             android:text="O que você quer assistir hoje?"

@@ -1,4 +1,4 @@
-package com.example.helio.moviematcher.presentation.detail
+package com.example.helio.moviematcher.presentation.profile
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -18,14 +18,14 @@ import com.example.helio.moviematcher.presentation.viewmodel.MovieViewModel
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 
-
 class ProfileFragment : Fragment(), GenreAdapterListener {
     private val viewModel: MovieViewModel by viewModel()
     private val genreAdapter: GenreAdapter by inject()
     lateinit var binding: FragmentProfileBinding
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_profile, container, false)
@@ -42,13 +42,14 @@ class ProfileFragment : Fragment(), GenreAdapterListener {
         context.let {
             binding.rvGenres.layoutManager = GridLayoutManager(it,3)
         }
-
     }
 
     private fun subscribeLiveData() {
-        viewModel.genresLiveData.observe(viewLifecycleOwner, Observer { genres ->
-            genreAdapter.setList(genres)
-        })
+        viewModel.genresLiveData.observe(
+            viewLifecycleOwner, Observer { genres ->
+                genreAdapter.setList(genres)
+            }
+        )
     }
 
     override fun setOnClickGenre(genre: GenreResponse, view: ConstraintLayout) {

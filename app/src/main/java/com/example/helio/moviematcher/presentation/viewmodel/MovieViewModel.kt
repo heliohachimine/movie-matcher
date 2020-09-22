@@ -2,8 +2,8 @@ package com.example.helio.moviematcher.presentation.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.helio.moviematcher.data.repository.MovieRepository
 import androidx.lifecycle.viewModelScope
+import com.example.helio.moviematcher.data.repository.MovieRepository
 import com.example.helio.moviematcher.data.response.GenreResponse
 import com.example.helio.moviematcher.data.response.MovieResponse
 import com.example.helio.moviematcher.data.response.ImagesResult

@@ -7,11 +7,10 @@ import androidx.fragment.app.Fragment
 import com.example.helio.moviematcher.R
 import com.example.helio.moviematcher.databinding.ActivityMatcherBinding
 import com.example.helio.moviematcher.presentation.profile.adapter.ListFragment
-import com.example.helio.moviematcher.presentation.detail.ProfileFragment
+import com.example.helio.moviematcher.presentation.profile.ProfileFragment
 import com.example.helio.moviematcher.presentation.viewmodel.MovieViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
-// TODO refactor rename to MainActivity
 class MatcherActivity : AppCompatActivity() {
 
     companion object {

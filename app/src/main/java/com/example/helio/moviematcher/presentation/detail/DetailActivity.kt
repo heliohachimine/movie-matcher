@@ -38,35 +38,44 @@ class DetailActivity : AppCompatActivity() {
 
     private fun getImages(id: Long) {
         viewModel.getImagesMovie(id)
-        viewModel.movieImagesLiveData.observe(this, Observer { images ->
-            images.backdrops?.forEach {
-                if (it.aspect_ratio != null && it.aspect_ratio == 1.0)
-                imgs.add("https://image.tmdb.org/t/p/original/" + it.file_path)
+        viewModel.movieImagesLiveData.observe(
+            this,
+            Observer { images ->
+                images.backdrops?.forEach {
+                    if (it.aspect_ratio != null && it.aspect_ratio == 1.0)
+                    imgs.add("https://image.tmdb.org/t/p/original/" + it.file_path)
+                }
+                imagePager.setList(imgs)
+                binding.movieBackdrop.adapter = imagePager
+                binding.dotsIndicator.setViewPager(binding.movieBackdrop)
             }
-            imagePager.setList(imgs)
-            binding.movieBackdrop.adapter = imagePager
-            binding.dotsIndicator.setViewPager(binding.movieBackdrop)
-        })
+        )
     }
 
     private fun getMovieData(id: Long) {
         viewModel.getSingleMovie(id)
-        viewModel.singleMovieLiveData.observe(this, Observer { movie ->
-            binding.movieOverview.text = movie.overview
-            binding.movieTitle.text = movie.title
-            binding.spotifyBtn.setOnClickListener {
-                openSpotify(movie.title)
+        viewModel.singleMovieLiveData.observe(
+            this,
+            Observer { movie ->
+                binding.movieOverview.text = movie.overview
+                binding.movieTitle.text = movie.title
+                binding.spotifyBtn.setOnClickListener {
+                    openSpotify(movie.title)
+                }
+                binding.netflixBtn.setOnClickListener {
+                    openNetflix(movie.title)
+                }
             }
-            binding.netflixBtn.setOnClickListener {
-                openNetflix(movie.title)
+        )
+        viewModel.movieImagesLiveData.observe(
+            this,
+            Observer { images ->
+                images.backdrops?.forEach {
+                    if (imgs.size >= 10) return@forEach
+                    imgs.add("https://image.tmdb.org/t/p/original" + it.file_path)
+                }
             }
-        })
-        viewModel.movieImagesLiveData.observe(this, Observer { images ->
-            images.backdrops?.forEach {
-                if (imgs.size >= 10) return@forEach
-                imgs.add("https://image.tmdb.org/t/p/original" + it.file_path)
-            }
-        })
+        )
     }
 
     private fun openSpotify(title: String) {

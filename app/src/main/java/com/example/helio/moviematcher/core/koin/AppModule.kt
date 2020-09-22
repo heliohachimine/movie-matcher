@@ -4,13 +4,16 @@ import com.example.helio.moviematcher.BuildConfig
 import com.example.helio.moviematcher.data.service.MoviesService
 import com.example.helio.moviematcher.presentation.matcher.ImagePager
 import com.example.helio.moviematcher.presentation.profile.adapter.GenreAdapter
-import okhttp3.*
+import okhttp3.HttpUrl
+import okhttp3.Request
+import okhttp3.Interceptor
+import okhttp3.OkHttpClient
+import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-
 
 val appModule = module {
 
