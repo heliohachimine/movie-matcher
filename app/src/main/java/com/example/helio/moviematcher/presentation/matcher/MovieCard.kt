@@ -15,7 +15,6 @@ import com.mindorks.placeholderview.annotations.Resolve
 import com.mindorks.placeholderview.annotations.View
 import com.mindorks.placeholderview.annotations.swipe.*
 
-
 @Layout(R.layout.card_movie)
 class MovieCard(context: Context, movie: MovieResponse, swipeView: SwipePlaceHolderView) {
     @View(R.id.posterImageView)
@@ -37,14 +36,12 @@ class MovieCard(context: Context, movie: MovieResponse, swipeView: SwipePlaceHol
             val intent = Intent(mContext, DetailActivity::class.java)
             intent.putExtra("movie_id", mMovie.id)
             mContext.startActivity(intent)
-
         }
     }
 
     @SwipeOut
     private fun onSwipedOut() {
         Log.d("EVENT", "onSwipedOut")
-//        mSwipeView.addView(this)
     }
 
     @SwipeCancelState
