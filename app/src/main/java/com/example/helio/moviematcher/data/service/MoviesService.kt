@@ -1,6 +1,10 @@
 package com.example.helio.moviematcher.data.service
 
-import com.example.helio.moviematcher.data.response.*
+import com.example.helio.moviematcher.data.response.MovieResult
+import com.example.helio.moviematcher.data.response.GenreResult
+import com.example.helio.moviematcher.data.response.MovieResponse
+import com.example.helio.moviematcher.data.response.KeywordResult
+import com.example.helio.moviematcher.data.response.ImagesResult
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
