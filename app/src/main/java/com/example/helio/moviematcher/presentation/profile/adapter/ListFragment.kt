@@ -1,4 +1,4 @@
-package com.example.helio.moviematcher.presentation.fragment
+package com.example.helio.moviematcher.presentation.profile.adapter
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -22,7 +22,8 @@ class ListFragment : Fragment() {
     }
 
     companion object {
-        fun newInstance() = ListFragment().apply {}
+        fun newInstance() = ListFragment()
+            .apply {}
     }
 
 }

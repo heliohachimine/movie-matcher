@@ -1,4 +1,4 @@
-package com.example.helio.moviematcher.presentation.fragment
+package com.example.helio.moviematcher.presentation.matcher
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,7 +10,6 @@ import androidx.lifecycle.Observer
 import com.example.helio.moviematcher.R
 import com.example.helio.moviematcher.data.response.MovieResponse
 import com.example.helio.moviematcher.databinding.FragmentMatcherBinding
-import com.example.helio.moviematcher.presentation.MovieCard
 import com.example.helio.moviematcher.presentation.viewmodel.MovieViewModel
 import com.mindorks.placeholderview.SwipeDecor
 import com.mindorks.placeholderview.SwipePlaceHolderView
@@ -22,7 +21,7 @@ class MatcherFragment : Fragment() {
     private val viewModel: MovieViewModel by viewModel()
     lateinit var binding: FragmentMatcherBinding
     var listMovies = ArrayList<MovieResponse>()
-    var page = 1
+    var page = (1..100).random()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,7 +44,7 @@ class MatcherFragment : Fragment() {
     }
 
     private fun getMoviesByGenre() {
-        viewModel.getTopRatedMovies(page)
+        viewModel.getPopularMovies(page)
         viewModel.moviesByGenreLiveData.observe(viewLifecycleOwner, Observer { movies ->
             movies.random()
             movies.forEach { movie ->
@@ -60,21 +59,28 @@ class MatcherFragment : Fragment() {
                 )
             listMovies.forEach { movie ->
                 context?.let {
-                    binding.swipeView.addView(MovieCard(it, movie, binding.swipeView))
+                    binding.swipeView.addView(
+                        MovieCard(
+                            it,
+                            movie,
+                            binding.swipeView
+                        )
+                    )
                 }
             }
             binding.swipeView.addItemRemoveListener {
                 if (it < 2) {
                     listMovies.clear()
-                    page++
+                    page = (1..100).random()
                     //binding.tvHotValue.text = page.toString()
-                    viewModel.getTopRatedMovies(page)
+                    viewModel.getPopularMovies(page)
                 }
             }
         })
     }
 
     companion object {
-        fun newInstance() = MatcherFragment().apply {}
+        fun newInstance() = MatcherFragment()
+            .apply {}
     }
 }

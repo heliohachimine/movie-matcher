@@ -14,9 +14,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".presentation.activity.DetailActivity" />
+        <activity android:name=".presentation.detail.DetailActivity" />
         <activity
-            android:name=".presentation.activity.MatcherActivity"
+            android:name=".presentation.matcher.MatcherActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

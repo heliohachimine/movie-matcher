@@ -1,4 +1,4 @@
-package com.example.helio.moviematcher.presentation.fragment
+package com.example.helio.moviematcher.presentation.detail
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,8 +12,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.helio.moviematcher.R
 import com.example.helio.moviematcher.data.response.GenreResponse
 import com.example.helio.moviematcher.databinding.FragmentProfileBinding
-import com.example.helio.moviematcher.presentation.adapter.GenreAdapter
-import com.example.helio.moviematcher.presentation.adapter.GenreAdapterListener
+import com.example.helio.moviematcher.presentation.profile.adapter.GenreAdapter
+import com.example.helio.moviematcher.presentation.profile.adapter.GenreAdapterListener
 import com.example.helio.moviematcher.presentation.viewmodel.MovieViewModel
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -56,6 +56,7 @@ class ProfileFragment : Fragment(), GenreAdapterListener {
     }
 
     companion object {
-        fun newInstance() = ProfileFragment().apply {}
+        fun newInstance() = ProfileFragment()
+            .apply {}
     }
 }

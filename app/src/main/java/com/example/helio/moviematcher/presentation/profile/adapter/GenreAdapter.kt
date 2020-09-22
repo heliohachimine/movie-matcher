@@ -1,4 +1,4 @@
-package com.example.helio.moviematcher.presentation.adapter
+package com.example.helio.moviematcher.presentation.profile.adapter
 
 import android.view.LayoutInflater
 import android.view.View

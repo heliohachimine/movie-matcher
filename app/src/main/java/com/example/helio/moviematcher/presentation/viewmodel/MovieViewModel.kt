@@ -44,7 +44,7 @@ class MovieViewModel(private val repository: MovieRepository) : ViewModel(){
     }
 
     //TODO refatorar essa função
-    fun getTopRatedMovies(page: Int) {
+    fun getPopularMovies(page: Int) {
         viewModelScope.launch {
             kotlin.runCatching {
                 val movies = async { repository.getPopularMovies(page) }

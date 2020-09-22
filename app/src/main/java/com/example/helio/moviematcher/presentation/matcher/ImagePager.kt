@@ -1,6 +1,5 @@
-package com.example.helio.moviematcher.presentation
+package com.example.helio.moviematcher.presentation.matcher
 
-import android.content.Context
 import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View

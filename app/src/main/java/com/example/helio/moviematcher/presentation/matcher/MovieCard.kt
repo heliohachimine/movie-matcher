@@ -1,20 +1,14 @@
-package com.example.helio.moviematcher.presentation
+package com.example.helio.moviematcher.presentation.matcher
 
-import android.app.SearchManager
-import android.content.ActivityNotFoundException
-import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
-import android.provider.MediaStore
 import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.example.helio.moviematcher.R
 import com.example.helio.moviematcher.data.response.MovieResponse
-import com.example.helio.moviematcher.presentation.activity.DetailActivity
+import com.example.helio.moviematcher.presentation.detail.DetailActivity
 import com.mindorks.placeholderview.SwipePlaceHolderView
 import com.mindorks.placeholderview.annotations.Layout
 import com.mindorks.placeholderview.annotations.Resolve

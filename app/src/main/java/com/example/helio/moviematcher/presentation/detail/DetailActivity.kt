@@ -1,4 +1,4 @@
-package com.example.helio.moviematcher.presentation.activity
+package com.example.helio.moviematcher.presentation.detail
 
 import android.content.Intent
 import android.net.Uri
@@ -8,7 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import com.example.helio.moviematcher.R
 import com.example.helio.moviematcher.databinding.ActivityDetailBinding
-import com.example.helio.moviematcher.presentation.ImagePager
+import com.example.helio.moviematcher.presentation.matcher.ImagePager
 import com.example.helio.moviematcher.presentation.viewmodel.MovieViewModel
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel

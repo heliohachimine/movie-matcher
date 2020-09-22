@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/turquoise"
-        tools:context=".presentation.fragment.ListFragment">
+        tools:context=".presentation.profile.adapter.ListFragment">
 
 
     </FrameLayout>
