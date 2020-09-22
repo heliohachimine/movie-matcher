@@ -29,7 +29,7 @@ class MatcherActivity : AppCompatActivity() {
         setupView()
         binding.mainContent
         goToFragment(MatcherFragment.newInstance())
-        binding.matcherBtn.setOnClickListener{
+        binding.matcherBtn.setOnClickListener {
            goToFragment(MatcherFragment.newInstance())
         }
         binding.profileBtn.setOnClickListener {
